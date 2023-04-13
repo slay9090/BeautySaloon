@@ -16,10 +16,12 @@ namespace BeautySaloon.views.modals
     {
         ApiService apiService = new ApiService();
         DataGridViewRow selectedRow;
-        public ChangeEmployee(DataGridViewRow selectedRow = null)
+        Action gridUpdate;
+        public ChangeEmployee( Action gridUpdate, DataGridViewRow selectedRow = null)
         {
             InitializeComponent();
             this.selectedRow = selectedRow;
+            this.gridUpdate = gridUpdate;
             if (selectedRow != null )
             {
                 textBoxFirstName.Text = selectedRow.Cells["FirstName"].Value.ToString();
@@ -45,6 +47,8 @@ namespace BeautySaloon.views.modals
             else {
                 apiService.employees.addItem(item);
             }
+            gridUpdate();
+            this.Close();
             
         }
     }

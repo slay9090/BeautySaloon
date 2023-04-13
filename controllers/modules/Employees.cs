@@ -15,17 +15,9 @@ namespace BeautySaloon.controllers.modules
 {
     internal class Employees : DBService
     {
-
-        public Employees() {              
-        }
         public BindingSource getData()
-        {            
-            dataAdapter.SelectCommand = new MySqlCommand(modelService.employees.getTableData(), dbConnect);
-            DataTable table = new DataTable();
-            dataAdapter.Fill(table);
-            BindingSource bSource = new BindingSource();
-            bSource.DataSource = table;
-            return bSource;
+        {
+           return Utils.DBAdapter.getBdData(dbConnect, modelService.employees.getTableData());
         }
         public void addItem(EmployeeItem employeeItem) {
             string[] requiredElems = { 
@@ -33,10 +25,20 @@ namespace BeautySaloon.controllers.modules
                 employeeItem.surnName, 
                 employeeItem.position 
             };
-            Utils.addItem(dbConnect, modelService.employees.addRow(employeeItem), requiredElems);
+            Utils.DBAdapter.setBdData(dbConnect, modelService.employees.addRow(employeeItem), requiredElems);
+            
         }
         public void editItem(EmployeeItem employeeItem) {
             Console.WriteLine("edit" + employeeItem.id);
+            string[] requiredElems = {
+                employeeItem.firstName,
+                employeeItem.surnName,
+                employeeItem.position,
+                employeeItem.id
+            };
+            Utils.DBAdapter.setBdData(dbConnect, 
+                modelService.employees.editRow(employeeItem), 
+                requiredElems);
         }
     }
 }

@@ -12,7 +12,7 @@ namespace BeautySaloon.controllers
 {
     class DBService
     {
-        public MySqlDataAdapter dataAdapter = new MySqlDataAdapter();
+        
         public ModelService modelService = new ModelService();
         public static MySqlConnection dbConnect;
         public MySqlCommand cmd;

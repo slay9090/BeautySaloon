@@ -7,44 +7,74 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.Common;
+using System.Data;
 
 namespace BeautySaloon.utils
 {
     public static class Utils
     {
 
-        public static Boolean isEmptyElemInArray(string[] arr)
+        public class Tools {
+            public static Boolean isEmptyElemInArray(string[] arr)
+            {
+                foreach (string el in arr)
+                {
+                    if (string.IsNullOrEmpty(el)) return true;
+                }
+                return false;
+            }
+        }
+
+   
+
+        public class DBAdapter : Tools
         {
-            foreach (string el in arr)
+            public static void setBdData(MySqlConnection dbConnect, string sqlCommand, string[] requiredFields)
             {
-                if (string.IsNullOrEmpty(el)) return true;
-            }
-            return false;
-        }
 
-        public static void addItem(MySqlConnection dbConnect, string sqlCommand, string[] requiredFields) {
-            
-            if (!isEmptyElemInArray(requiredFields))
-            {
-                try
+                if (!isEmptyElemInArray(requiredFields))
                 {
-                    var cmd = dbConnect.CreateCommand();
-                    cmd.CommandText = sqlCommand;
-                    cmd.ExecuteNonQuery();
+                    try
+                    {
+                        var cmd = dbConnect.CreateCommand();
+                        cmd.CommandText = sqlCommand;
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+
                 }
-                catch (Exception ex)
+                else
                 {
+                    MessageBox.Show("Заполнены не все поля!");
+                }
+
+            }
+            public static dynamic getBdData(MySqlConnection dbConnect, string sqlCommand) {
+                MySqlDataAdapter dataAdapter = new MySqlDataAdapter();
+                try {
+                    dataAdapter.SelectCommand = new MySqlCommand(
+                        sqlCommand, dbConnect);
+                    DataTable table = new DataTable();
+                    dataAdapter.Fill(table);
+                    BindingSource bSource = new BindingSource();
+                    bSource.DataSource = table;
+                    return bSource;
+                }     
+                catch (Exception ex) {
                     MessageBox.Show(ex.Message);
-                }
-
+                    return null;
+                }                
             }
-            else
-            {
-                MessageBox.Show("Заполнены не все поля!");
-            }
-
         }
-    
+
+   
+
+
+
 
     }
 }

@@ -32,5 +32,15 @@ namespace BeautySaloon.models
 
             return sql;
         }
+        public string editRow(EmployeeItem employeeItem) {
+
+            string sql = $"UPDATE {bdName}.{tableName} " +
+                $"SET FirstName='{employeeItem.firstName}', " +
+                $"SurnName='${employeeItem.surnName}', " +
+                $"MiddleName='{employeeItem.middleName}', " +
+                $"`Position`='{employeeItem.position}' " +
+                $"WHERE Id={employeeItem.id};";
+            return sql; 
+        }
     }
 }

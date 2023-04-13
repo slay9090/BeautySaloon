@@ -33,23 +33,18 @@ namespace BeautySaloon.view
         private void btnGetData_Click(object sender, EventArgs e)
         {
 
-            dataGridViewEmployee.DataSource = apiService.employees.getData();
-            tableEmployeeSetView(dataGridViewEmployee);
-     
+            getEmployeesData();
+
+
         }
 
-        private void tableEmployeeSetView(DataGridView dataGrid) {
-            dataGrid.Columns["Id"].Visible = false;
-            dataGrid.Columns["FirstName"].HeaderText = "Фамилия";
-            dataGrid.Columns["SurnName"].HeaderText = "Имя";
-            dataGrid.Columns["MiddleName"].HeaderText = "Отчество";
-            dataGrid.Columns["Position"].HeaderText = "Должность";
-        }
+ 
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ChangeEmployee changeEmployee = new ChangeEmployee();
-            changeEmployee.Show();
+            ChangeEmployee changeEmployee = new ChangeEmployee(getEmployeesData);
+ 
+             changeEmployee.Show();
         }
 
         private void buttonChangeEmployee_Click(object sender, EventArgs e)
@@ -57,14 +52,32 @@ namespace BeautySaloon.view
             if (dataGridViewEmployee.SelectedRows.Count != 0)
             {
                 DataGridViewRow selectedRow = dataGridViewEmployee.SelectedRows[0];
-                ChangeEmployee changeEmployee = new ChangeEmployee(selectedRow);
+                ChangeEmployee changeEmployee = new ChangeEmployee(getEmployeesData,selectedRow);
                 changeEmployee.Show();
+                Console.WriteLine("?");
             }
             else {
                 MessageBox.Show("ничего не выбранно");
                
             }
                
+        }
+
+        public void getEmployeesData() {
+            dataGridViewEmployee.DataSource = apiService.employees.getData();
+            tableEmployeeSetView(dataGridViewEmployee);
+
+        }
+
+
+
+        private void tableEmployeeSetView(DataGridView dataGrid)
+        {
+            dataGrid.Columns["Id"].Visible = false;
+            dataGrid.Columns["FirstName"].HeaderText = "Фамилия";
+            dataGrid.Columns["SurnName"].HeaderText = "Имя";
+            dataGrid.Columns["MiddleName"].HeaderText = "Отчество";
+            dataGrid.Columns["Position"].HeaderText = "Должность";
         }
     }
 }

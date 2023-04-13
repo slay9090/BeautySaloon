@@ -12,8 +12,10 @@ namespace BeautySaloon.controllers.modules
     {
  
 
-        public void create() {       
-            dataAdapter.SelectCommand = new MySqlCommand(modelService.db.create(), dbConnect);
+        public void create() {    
+            cmd = dbConnect.CreateCommand();
+            cmd.CommandText = modelService.db.create();
+            cmd.ExecuteNonQuery();
         }
     }
 }

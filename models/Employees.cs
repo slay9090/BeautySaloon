@@ -1,4 +1,5 @@
 ﻿using BeautySaloon.controllers;
+using BeautySaloon.models.Types;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,9 +20,17 @@ namespace BeautySaloon.models
             return sql ;
         }
 
-        public string add() {
+        public string addRow(EmployeeItem employeeItem)
+        {
 
-            return "";
-                }
+            string sql = $"INSERT INTO {bdName}.{tableName} (FirstName, SurnName, MiddleName, `Position`) " +
+                $"VALUES" +
+                $"('{employeeItem.firstName}', " +
+                $"'{employeeItem.surnName}'," +
+                $"'{employeeItem.middleName}'," +
+                $"'{employeeItem.position}');";
+
+            return sql;
+        }
     }
 }

@@ -90,6 +90,8 @@
     <Compile Include="models\Employees.cs" />
     <Compile Include="models\Model.cs" />
     <Compile Include="models\ModelService.cs" />
+    <Compile Include="models\types\EmployeeItem.cs" />
+    <Compile Include="utils\Utils.cs" />
     <Compile Include="views\Auth.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +105,12 @@
     </Compile>
     <Compile Include="views\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\modals\ChangeEmployee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\modals\ChangeEmployee.Designer.cs">
+      <DependentUpon>ChangeEmployee.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="views\Auth.resx">
       <DependentUpon>Auth.cs</DependentUpon>
@@ -118,6 +126,9 @@
     </Compile>
     <EmbeddedResource Include="views\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\modals\ChangeEmployee.resx">
+      <DependentUpon>ChangeEmployee.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

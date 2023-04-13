@@ -15,6 +15,7 @@ namespace BeautySaloon.controllers
         public MySqlDataAdapter dataAdapter = new MySqlDataAdapter();
         public ModelService modelService = new ModelService();
         public static MySqlConnection dbConnect;
+        public MySqlCommand cmd;
         ApiService apiService;
 
          public Boolean init(ConnectInfo connectInfo) {            
@@ -28,10 +29,8 @@ namespace BeautySaloon.controllers
             try
             {
                 dbConnect.Open();
-                apiService = new ApiService();
-                
+                apiService = new ApiService();                
                 modelService.setBdName(connectInfo.DBName);
-                //model.bdName = connectInfo.DBName;
                 apiService.db.create();
                 return true;
 

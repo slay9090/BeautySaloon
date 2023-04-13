@@ -16,6 +16,6 @@ namespace BeautySaloon.models
         }
         public void setBdName(string name) {
             bdName = name;
-                }
+        }
     }
 }

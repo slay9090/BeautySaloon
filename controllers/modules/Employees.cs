@@ -8,25 +8,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BeautySaloon.models.Types;
+using BeautySaloon.utils;
 
 namespace BeautySaloon.controllers.modules
 {
     internal class Employees : DBService
     {
-        //public MySqlDataAdapter dataAdapter = new MySqlDataAdapter();
-        //private Model model = new Model();
 
         public Employees() {              
         }
         public BindingSource getData()
-        {
-            Console.WriteLine("da nu" + dbConnect.State);
+        {            
             dataAdapter.SelectCommand = new MySqlCommand(modelService.employees.getTableData(), dbConnect);
             DataTable table = new DataTable();
             dataAdapter.Fill(table);
             BindingSource bSource = new BindingSource();
             bSource.DataSource = table;
             return bSource;
+        }
+        public void addItem(EmployeeItem employeeItem) {
+            string[] requiredElems = { 
+                employeeItem.firstName, 
+                employeeItem.surnName, 
+                employeeItem.position 
+            };
+            Utils.addItem(dbConnect, modelService.employees.addRow(employeeItem), requiredElems);
+        }
+        public void editItem(EmployeeItem employeeItem) {
+            Console.WriteLine("edit" + employeeItem.id);
         }
     }
 }

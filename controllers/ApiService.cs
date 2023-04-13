@@ -12,10 +12,12 @@ namespace BeautySaloon.controllers
     {
         public modules.Employees employees;
         public modules.DB db;
+        public modules.Cares cares;
 
         public ApiService() {
-        employees = new modules.Employees();
-        db = new modules.DB();
+            employees = new modules.Employees();
+            db = new modules.DB();
+            cares = new modules.Cares();
         
         }
     }

@@ -40,5 +40,15 @@ namespace BeautySaloon.controllers.modules
                 modelService.employees.editRow(employeeItem), 
                 requiredElems);
         }
+
+        public void deleteItem(EmployeeItem employeeItem)
+        {
+            string[] requiredElems = {employeeItem.id};
+            Utils.DBAdapter.setBdData(dbConnect, modelService.employees.deleteRow(employeeItem), requiredElems);
+        }
+
+        public BindingSource getFilteredData(string searchValue) {
+            return Utils.DBAdapter.getBdData(dbConnect, modelService.employees.getTableFilteredData(searchValue));
+        }
     }
 }

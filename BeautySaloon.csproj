@@ -84,12 +84,15 @@
     <Compile Include="controllers\ApiService.cs" />
     <Compile Include="controllers\ConnectInfo.cs" />
     <Compile Include="controllers\DBService.cs" />
+    <Compile Include="controllers\modules\Cares.cs" />
     <Compile Include="controllers\modules\DB.cs" />
     <Compile Include="controllers\modules\Employees.cs" />
+    <Compile Include="models\Cares.cs" />
     <Compile Include="models\DB.cs" />
     <Compile Include="models\Employees.cs" />
     <Compile Include="models\Model.cs" />
     <Compile Include="models\ModelService.cs" />
+    <Compile Include="models\types\CareItem.cs" />
     <Compile Include="models\types\EmployeeItem.cs" />
     <Compile Include="utils\Utils.cs" />
     <Compile Include="views\Auth.cs">

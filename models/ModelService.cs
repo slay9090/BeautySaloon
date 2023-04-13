@@ -10,9 +10,11 @@ namespace BeautySaloon.models
     {
         public DB db;
         public Employees employees;
+        public Cares cares;
         public ModelService() {
             db = new DB();
             employees = new Employees();
+            cares = new Cares();
         }
         public void setBdName(string name) {
             bdName = name;

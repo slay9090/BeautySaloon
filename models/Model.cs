@@ -10,7 +10,7 @@ namespace BeautySaloon.models
     class Model
     {
         public static string bdName;
-        public DB bdModel;
-        public Employees employeesModel;
+        //public DB bdModel;
+        //public Employees employeesModel;
     }
 }

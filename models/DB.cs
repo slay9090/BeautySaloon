@@ -12,11 +12,6 @@ namespace BeautySaloon.models
         // string dbName = controllers.ConnectInfo.DBName;
 
         public string create() {
-
-            employeesModel = new Employees();
-
-            Console.WriteLine(employeesModel.getTableData());
-
             return $"CREATE DATABASE IF NOT EXISTS `{bdName}`;";
         }
         public void remove(string dbName)

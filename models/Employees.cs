@@ -42,5 +42,20 @@ namespace BeautySaloon.models
                 $"WHERE Id={employeeItem.id};";
             return sql; 
         }
+
+        public string getTableFilteredData(string str) {
+
+            string sql = $"SELECT * FROM {bdName}.{tableName} WHERE " +
+                $"FirstName LIKE '%{str}%' OR " +
+                $"SurnName LIKE '%{str}%' OR " +
+                $"MiddleName LIKE '%{str}%' OR " +
+                $"Position LIKE '%{str}%';";
+            return sql;
+        }
+        public string deleteRow(EmployeeItem employeeItem) {
+            string sql = $"DELETE FROM {bdName}.{tableName} " +
+                $"WHERE Id={employeeItem.id};";
+            return sql;
+        }
     }
 }

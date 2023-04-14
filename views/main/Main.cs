@@ -55,6 +55,19 @@ namespace BeautySaloon.views
             dataGrid.Columns["Price"].HeaderText = "Стоимость";
         }
 
+        private void getSkillsEmployeeData() {
+            dataGridViewSkills.DataSource = apiService.employees.getData();
+            tableSkillsEmployeeSetView(dataGridViewSkills);
+        }
+
+        private void tableSkillsEmployeeSetView(DataGridView dataGrid) {
+            dataGrid.Columns["Id"].Visible = false;
+            dataGrid.Columns["FirstName"].HeaderText = "Фамилия";
+            dataGrid.Columns["SurnName"].HeaderText = "Имя";
+            dataGrid.Columns["MiddleName"].Visible = false;
+            dataGrid.Columns["Position"].Visible = false;
+        }
+
 
 
 
@@ -128,6 +141,10 @@ namespace BeautySaloon.views
         {
             getEmployeesData();
             getCaresData();
+            getSkillsEmployeeData();
+
+            checkedListBoxSkills.DataSource = apiService.cares.getData();
+            checkedListBoxSkills.DisplayMember = "Name";
         }
 
 
@@ -176,6 +193,11 @@ namespace BeautySaloon.views
             var data = apiService.cares.getFilteredData(textBoxCareSearch.Text);
             dataGridViewCares.DataSource = data;
             tableCaresSetView(dataGridViewCares);
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

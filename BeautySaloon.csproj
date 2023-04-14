@@ -95,19 +95,26 @@
     <Compile Include="models\types\CareItem.cs" />
     <Compile Include="models\types\EmployeeItem.cs" />
     <Compile Include="utils\Utils.cs" />
-    <Compile Include="views\Auth.cs">
+    <Compile Include="views\auth\Auth.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\Auth.Designer.cs">
+    <Compile Include="views\auth\Auth.Designer.cs">
       <DependentUpon>Auth.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="views\Main.cs">
+    <Compile Include="views\main\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="views\Main.Designer.cs">
+    <Compile Include="views\main\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="views\main\MainView.cs" />
+    <Compile Include="views\modals\ChangeCare.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\modals\ChangeCare.Designer.cs">
+      <DependentUpon>ChangeCare.cs</DependentUpon>
     </Compile>
     <Compile Include="views\modals\ChangeEmployee.cs">
       <SubType>Form</SubType>
@@ -115,7 +122,7 @@
     <Compile Include="views\modals\ChangeEmployee.Designer.cs">
       <DependentUpon>ChangeEmployee.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="views\Auth.resx">
+    <EmbeddedResource Include="views\auth\Auth.resx">
       <DependentUpon>Auth.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -127,8 +134,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="views\Main.resx">
+    <EmbeddedResource Include="views\main\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\modals\ChangeCare.resx">
+      <DependentUpon>ChangeCare.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\modals\ChangeEmployee.resx">
       <DependentUpon>ChangeEmployee.cs</DependentUpon>

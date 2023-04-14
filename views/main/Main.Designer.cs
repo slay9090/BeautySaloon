@@ -1,7 +1,8 @@
-﻿namespace BeautySaloon.view
+﻿namespace BeautySaloon.views
 {
     partial class Main
     {
+        
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -94,7 +95,7 @@
             this.buttonFilteredItems.Text = "Найти";
             this.buttonFilteredItems.UseVisualStyleBackColor = true;
             this.buttonFilteredItems.Click += new System.EventHandler(this.buttonFilteredItems_Click);
-            this.buttonFilteredItems.Layout += new System.Windows.Forms.LayoutEventHandler(this.buttonFilteredItems_Layout);
+           
             // 
             // textBoxFiltered
             // 
@@ -125,13 +126,16 @@
             // 
             // dataGridViewEmployee
             // 
+            this.dataGridViewEmployee.AllowUserToAddRows = false;
+            this.dataGridViewEmployee.AllowUserToDeleteRows = false;
             this.dataGridViewEmployee.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewEmployee.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridViewEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEmployee.Location = new System.Drawing.Point(6, 47);
             this.dataGridViewEmployee.MultiSelect = false;
             this.dataGridViewEmployee.Name = "dataGridViewEmployee";
             this.dataGridViewEmployee.ReadOnly = true;
-            this.dataGridViewEmployee.RowHeadersWidth = 62;
+            this.dataGridViewEmployee.RowHeadersWidth = 25;
             this.dataGridViewEmployee.RowTemplate.Height = 28;
             this.dataGridViewEmployee.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewEmployee.Size = new System.Drawing.Size(787, 359);
@@ -145,7 +149,7 @@
             this.buttonAddEmployee.TabIndex = 0;
             this.buttonAddEmployee.Text = "Добавить";
             this.buttonAddEmployee.UseVisualStyleBackColor = true;
-            this.buttonAddEmployee.Click += new System.EventHandler(this.button1_Click);
+            this.buttonAddEmployee.Click += new System.EventHandler(this.buttonAddEmployee_Click);
             // 
             // tabPageCares
             // 
@@ -171,6 +175,7 @@
             this.buttonCareSearch.TabIndex = 12;
             this.buttonCareSearch.Text = "Найти";
             this.buttonCareSearch.UseVisualStyleBackColor = true;
+            this.buttonCareSearch.Click += new System.EventHandler(this.buttonCareSearch_Click);
             // 
             // textBoxCareSearch
             // 
@@ -187,6 +192,7 @@
             this.buttonCareDeleteItem.TabIndex = 10;
             this.buttonCareDeleteItem.Text = "Удалить";
             this.buttonCareDeleteItem.UseVisualStyleBackColor = true;
+            this.buttonCareDeleteItem.Click += new System.EventHandler(this.buttonCareDeleteItem_Click);
             // 
             // buttonCareEditItem
             // 
@@ -196,16 +202,20 @@
             this.buttonCareEditItem.TabIndex = 9;
             this.buttonCareEditItem.Text = "Изменить";
             this.buttonCareEditItem.UseVisualStyleBackColor = true;
+            this.buttonCareEditItem.Click += new System.EventHandler(this.buttonCareEditItem_Click);
             // 
             // dataGridViewCares
             // 
+            this.dataGridViewCares.AllowUserToAddRows = false;
+            this.dataGridViewCares.AllowUserToDeleteRows = false;
             this.dataGridViewCares.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewCares.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dataGridViewCares.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewCares.Location = new System.Drawing.Point(6, 47);
             this.dataGridViewCares.MultiSelect = false;
             this.dataGridViewCares.Name = "dataGridViewCares";
             this.dataGridViewCares.ReadOnly = true;
-            this.dataGridViewCares.RowHeadersWidth = 62;
+            this.dataGridViewCares.RowHeadersWidth = 25;
             this.dataGridViewCares.RowTemplate.Height = 28;
             this.dataGridViewCares.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewCares.Size = new System.Drawing.Size(787, 359);
@@ -219,6 +229,7 @@
             this.buttonCareAddItem.TabIndex = 7;
             this.buttonCareAddItem.Text = "Добавить";
             this.buttonCareAddItem.UseVisualStyleBackColor = true;
+            this.buttonCareAddItem.Click += new System.EventHandler(this.buttonCareAddItem_Click);
             // 
             // tabPageSkills
             // 

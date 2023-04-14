@@ -1,5 +1,5 @@
 ﻿using BeautySaloon.controllers;
-using BeautySaloon.view;
+using BeautySaloon.views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

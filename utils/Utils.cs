@@ -53,7 +53,7 @@ namespace BeautySaloon.utils
                 }
 
             }
-            public static dynamic getBdData(MySqlConnection dbConnect, string sqlCommand) {
+            public static BindingSource getBdData(MySqlConnection dbConnect, string sqlCommand) {
                 MySqlDataAdapter dataAdapter = new MySqlDataAdapter();
                 try {
                     dataAdapter.SelectCommand = new MySqlCommand(
@@ -61,7 +61,7 @@ namespace BeautySaloon.utils
                     DataTable table = new DataTable();
                     dataAdapter.Fill(table);
                     BindingSource bSource = new BindingSource();
-                    bSource.DataSource = table;
+                    bSource.DataSource = table;            
                     return bSource;
                 }     
                 catch (Exception ex) {

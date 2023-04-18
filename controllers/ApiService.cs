@@ -13,11 +13,13 @@ namespace BeautySaloon.controllers
         public modules.Employees employees;
         public modules.DB db;
         public modules.Cares cares;
+        public modules.Skills skills;
 
         public ApiService() {
             employees = new modules.Employees();
             db = new modules.DB();
             cares = new modules.Cares();
+            skills = new modules.Skills();
         
         }
     }

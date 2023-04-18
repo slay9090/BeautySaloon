@@ -45,15 +45,16 @@
             this.dataGridViewCares = new System.Windows.Forms.DataGridView();
             this.buttonCareAddItem = new System.Windows.Forms.Button();
             this.tabPageSkills = new System.Windows.Forms.TabPage();
+            this.buttonSaveSkills = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.dataGridViewSkills = new System.Windows.Forms.DataGridView();
+            this.checkedListBoxSkills = new System.Windows.Forms.CheckedListBox();
             this.tabPageClients = new System.Windows.Forms.TabPage();
             this.tabPageOrders = new System.Windows.Forms.TabPage();
             this.btnGenerateBDData = new System.Windows.Forms.Button();
             this.btnGetData = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.checkedListBoxSkills = new System.Windows.Forms.CheckedListBox();
-            this.dataGridViewSkills = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.tabControlMain.SuspendLayout();
             this.tabPageEmployee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).BeginInit();
@@ -77,6 +78,7 @@
             this.tabControlMain.Size = new System.Drawing.Size(807, 452);
             this.tabControlMain.TabIndex = 0;
             this.tabControlMain.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
+            this.tabControlMain.Click += new System.EventHandler(this.tabControlMain_Click);
             // 
             // tabPageEmployee
             // 
@@ -240,6 +242,7 @@
             // 
             // tabPageSkills
             // 
+            this.tabPageSkills.Controls.Add(this.buttonSaveSkills);
             this.tabPageSkills.Controls.Add(this.label2);
             this.tabPageSkills.Controls.Add(this.label1);
             this.tabPageSkills.Controls.Add(this.tableLayoutPanel1);
@@ -250,6 +253,77 @@
             this.tabPageSkills.TabIndex = 2;
             this.tabPageSkills.Text = "Навыки";
             this.tabPageSkills.UseVisualStyleBackColor = true;
+            this.tabPageSkills.Click += new System.EventHandler(this.tabPageSkills_Click);
+            // 
+            // buttonSaveSkills
+            // 
+            this.buttonSaveSkills.Location = new System.Drawing.Point(679, 7);
+            this.buttonSaveSkills.Name = "buttonSaveSkills";
+            this.buttonSaveSkills.Size = new System.Drawing.Size(110, 31);
+            this.buttonSaveSkills.TabIndex = 4;
+            this.buttonSaveSkills.Text = "Сохранить";
+            this.buttonSaveSkills.UseVisualStyleBackColor = true;
+            this.buttonSaveSkills.Click += new System.EventHandler(this.buttonSaveSkills_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(408, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(71, 20);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Навыки:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Сотрудники:";
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.dataGridViewSkills, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.checkedListBoxSkills, 1, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 57);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(787, 356);
+            this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            // 
+            // dataGridViewSkills
+            // 
+            this.dataGridViewSkills.AllowUserToAddRows = false;
+            this.dataGridViewSkills.AllowUserToDeleteRows = false;
+            this.dataGridViewSkills.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewSkills.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridViewSkills.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewSkills.Location = new System.Drawing.Point(3, 3);
+            this.dataGridViewSkills.MultiSelect = false;
+            this.dataGridViewSkills.Name = "dataGridViewSkills";
+            this.dataGridViewSkills.ReadOnly = true;
+            this.dataGridViewSkills.RowHeadersVisible = false;
+            this.dataGridViewSkills.RowHeadersWidth = 25;
+            this.dataGridViewSkills.RowTemplate.Height = 28;
+            this.dataGridViewSkills.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewSkills.Size = new System.Drawing.Size(377, 328);
+            this.dataGridViewSkills.TabIndex = 11;
+            this.dataGridViewSkills.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewSkills_CellMouseClick);
+            // 
+            // checkedListBoxSkills
+            // 
+            this.checkedListBoxSkills.FormattingEnabled = true;
+            this.checkedListBoxSkills.Location = new System.Drawing.Point(396, 3);
+            this.checkedListBoxSkills.Name = "checkedListBoxSkills";
+            this.checkedListBoxSkills.Size = new System.Drawing.Size(388, 257);
+            this.checkedListBoxSkills.TabIndex = 10;
             // 
             // tabPageClients
             // 
@@ -289,65 +363,6 @@
             this.btnGetData.Text = "Обновить";
             this.btnGetData.UseVisualStyleBackColor = true;
             this.btnGetData.Click += new System.EventHandler(this.btnGetData_Click);
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.dataGridViewSkills, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.checkedListBoxSkills, 1, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 38);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(787, 375);
-            this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
-            // 
-            // checkedListBoxSkills
-            // 
-            this.checkedListBoxSkills.FormattingEnabled = true;
-            this.checkedListBoxSkills.Location = new System.Drawing.Point(396, 3);
-            this.checkedListBoxSkills.Name = "checkedListBoxSkills";
-            this.checkedListBoxSkills.Size = new System.Drawing.Size(388, 349);
-            this.checkedListBoxSkills.TabIndex = 10;
-            // 
-            // dataGridViewSkills
-            // 
-            this.dataGridViewSkills.AllowUserToAddRows = false;
-            this.dataGridViewSkills.AllowUserToDeleteRows = false;
-            this.dataGridViewSkills.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridViewSkills.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dataGridViewSkills.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewSkills.Location = new System.Drawing.Point(3, 3);
-            this.dataGridViewSkills.MultiSelect = false;
-            this.dataGridViewSkills.Name = "dataGridViewSkills";
-            this.dataGridViewSkills.ReadOnly = true;
-            this.dataGridViewSkills.RowHeadersVisible = false;
-            this.dataGridViewSkills.RowHeadersWidth = 25;
-            this.dataGridViewSkills.RowTemplate.Height = 28;
-            this.dataGridViewSkills.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSkills.Size = new System.Drawing.Size(377, 328);
-            this.dataGridViewSkills.TabIndex = 11;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Сотрудники:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(408, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 20);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Навыки:";
             // 
             // Main
             // 
@@ -404,5 +419,6 @@
         private System.Windows.Forms.DataGridView dataGridViewSkills;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonSaveSkills;
     }
 }

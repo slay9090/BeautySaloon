@@ -15,7 +15,6 @@ namespace BeautySaloon.models
 
 
         public string getTableData() {
-            Console.WriteLine("bdName"+ bdName);
             string sql = $"SELECT * FROM {bdName}.{tableName};";
             return sql ;
         }

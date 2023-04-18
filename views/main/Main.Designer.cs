@@ -55,6 +55,12 @@
             this.tabPageOrders = new System.Windows.Forms.TabPage();
             this.btnGenerateBDData = new System.Windows.Forms.Button();
             this.btnGetData = new System.Windows.Forms.Button();
+            this.buttonFilterClients = new System.Windows.Forms.Button();
+            this.textBoxFilterClients = new System.Windows.Forms.TextBox();
+            this.buttonDeleteClient = new System.Windows.Forms.Button();
+            this.buttonChangeClient = new System.Windows.Forms.Button();
+            this.dataGridViewClients = new System.Windows.Forms.DataGridView();
+            this.buttonAddClient = new System.Windows.Forms.Button();
             this.tabControlMain.SuspendLayout();
             this.tabPageEmployee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).BeginInit();
@@ -63,6 +69,8 @@
             this.tabPageSkills.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSkills)).BeginInit();
+            this.tabPageClients.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClients)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -322,11 +330,17 @@
             this.checkedListBoxSkills.FormattingEnabled = true;
             this.checkedListBoxSkills.Location = new System.Drawing.Point(396, 3);
             this.checkedListBoxSkills.Name = "checkedListBoxSkills";
-            this.checkedListBoxSkills.Size = new System.Drawing.Size(388, 257);
+            this.checkedListBoxSkills.Size = new System.Drawing.Size(388, 349);
             this.checkedListBoxSkills.TabIndex = 10;
             // 
             // tabPageClients
             // 
+            this.tabPageClients.Controls.Add(this.buttonFilterClients);
+            this.tabPageClients.Controls.Add(this.textBoxFilterClients);
+            this.tabPageClients.Controls.Add(this.buttonDeleteClient);
+            this.tabPageClients.Controls.Add(this.buttonChangeClient);
+            this.tabPageClients.Controls.Add(this.dataGridViewClients);
+            this.tabPageClients.Controls.Add(this.buttonAddClient);
             this.tabPageClients.Location = new System.Drawing.Point(4, 29);
             this.tabPageClients.Name = "tabPageClients";
             this.tabPageClients.Padding = new System.Windows.Forms.Padding(3);
@@ -364,6 +378,67 @@
             this.btnGetData.UseVisualStyleBackColor = true;
             this.btnGetData.Click += new System.EventHandler(this.btnGetData_Click);
             // 
+            // buttonFilterClients
+            // 
+            this.buttonFilterClients.Location = new System.Drawing.Point(237, 9);
+            this.buttonFilterClients.Name = "buttonFilterClients";
+            this.buttonFilterClients.Size = new System.Drawing.Size(100, 35);
+            this.buttonFilterClients.TabIndex = 12;
+            this.buttonFilterClients.Text = "Найти";
+            this.buttonFilterClients.UseVisualStyleBackColor = true;
+            // 
+            // textBoxFilterClients
+            // 
+            this.textBoxFilterClients.Location = new System.Drawing.Point(6, 13);
+            this.textBoxFilterClients.Name = "textBoxFilterClients";
+            this.textBoxFilterClients.Size = new System.Drawing.Size(225, 26);
+            this.textBoxFilterClients.TabIndex = 11;
+            // 
+            // buttonDeleteClient
+            // 
+            this.buttonDeleteClient.Location = new System.Drawing.Point(481, 9);
+            this.buttonDeleteClient.Name = "buttonDeleteClient";
+            this.buttonDeleteClient.Size = new System.Drawing.Size(100, 35);
+            this.buttonDeleteClient.TabIndex = 10;
+            this.buttonDeleteClient.Text = "Удалить";
+            this.buttonDeleteClient.UseVisualStyleBackColor = true;
+            // 
+            // buttonChangeClient
+            // 
+            this.buttonChangeClient.Location = new System.Drawing.Point(587, 9);
+            this.buttonChangeClient.Name = "buttonChangeClient";
+            this.buttonChangeClient.Size = new System.Drawing.Size(100, 35);
+            this.buttonChangeClient.TabIndex = 9;
+            this.buttonChangeClient.Text = "Изменить";
+            this.buttonChangeClient.UseVisualStyleBackColor = true;
+            // 
+            // dataGridViewClients
+            // 
+            this.dataGridViewClients.AllowUserToAddRows = false;
+            this.dataGridViewClients.AllowUserToDeleteRows = false;
+            this.dataGridViewClients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewClients.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridViewClients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewClients.Location = new System.Drawing.Point(6, 50);
+            this.dataGridViewClients.MultiSelect = false;
+            this.dataGridViewClients.Name = "dataGridViewClients";
+            this.dataGridViewClients.ReadOnly = true;
+            this.dataGridViewClients.RowHeadersWidth = 25;
+            this.dataGridViewClients.RowTemplate.Height = 28;
+            this.dataGridViewClients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewClients.Size = new System.Drawing.Size(787, 359);
+            this.dataGridViewClients.TabIndex = 8;
+            // 
+            // buttonAddClient
+            // 
+            this.buttonAddClient.Location = new System.Drawing.Point(693, 9);
+            this.buttonAddClient.Name = "buttonAddClient";
+            this.buttonAddClient.Size = new System.Drawing.Size(100, 35);
+            this.buttonAddClient.TabIndex = 7;
+            this.buttonAddClient.Text = "Добавить";
+            this.buttonAddClient.UseVisualStyleBackColor = true;
+            this.buttonAddClient.Click += new System.EventHandler(this.buttonAddClient_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -388,6 +463,9 @@
             this.tabPageSkills.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSkills)).EndInit();
+            this.tabPageClients.ResumeLayout(false);
+            this.tabPageClients.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClients)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -420,5 +498,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonSaveSkills;
+        private System.Windows.Forms.Button buttonFilterClients;
+        private System.Windows.Forms.TextBox textBoxFilterClients;
+        private System.Windows.Forms.Button buttonDeleteClient;
+        private System.Windows.Forms.Button buttonChangeClient;
+        private System.Windows.Forms.DataGridView dataGridViewClients;
+        private System.Windows.Forms.Button buttonAddClient;
     }
 }

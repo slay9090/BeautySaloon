@@ -46,6 +46,22 @@ namespace BeautySaloon.views
             dataGrid.Columns["Position"].HeaderText = "Должность";
         }
 
+        public void updatedClientsData()
+        {
+            dataGridViewClients.DataSource = apiService.clients.getData();
+            tableClientsSetView(dataGridViewClients);
+        }
+
+        private void tableClientsSetView(DataGridView dataGrid)
+        {
+            dataGrid.Columns["Id"].Visible = false;
+            dataGrid.Columns["FirstName"].HeaderText = "Фамилия";
+            dataGrid.Columns["SurnName"].HeaderText = "Имя";
+            dataGrid.Columns["MiddleName"].HeaderText = "Отчество";
+            dataGrid.Columns["PhoneNumber"].HeaderText = "Телефон";
+            dataGrid.Columns["BirthDate"].HeaderText = "Дата рождения";
+        }
+
         private void updatedCaresData()
         {
             dataGridViewCares.DataSource = apiService.cares.getData();
@@ -72,6 +88,9 @@ namespace BeautySaloon.views
         }
 
         private void updatedCheckedSkillsByEmployee() {
+
+            checkedListBoxSkills.DataSource = apiService.cares.getData();
+            checkedListBoxSkills.DisplayMember = "Name";
 
             DataGridViewRow selectedRow = dataGridViewSkills.SelectedRows[0];
             string idEmployee = selectedRow.Cells["Id"].Value.ToString();
@@ -161,11 +180,7 @@ namespace BeautySaloon.views
             updatedEmployeesData();
             updatedCaresData();
             updatedSkillsEmployeeData();
-
-            checkedListBoxSkills.DataSource = apiService.cares.getData();
-            checkedListBoxSkills.DisplayMember = "Name";
-
-            
+            updatedClientsData();            
         }
         private void tabControl1_Selected(object sender, TabControlEventArgs e)
         {
@@ -279,6 +294,12 @@ namespace BeautySaloon.views
             DataGridViewRow row = dataGridViewSkills.Rows[e.RowIndex];
             //string idEmployee = row.Cells["Id"].Value.ToString();
             updatedCheckedSkillsByEmployee();
+        }
+
+        private void buttonAddClient_Click(object sender, EventArgs e)
+        {
+            ChangeClient changeClient = new ChangeClient(updatedClientsData);
+            changeClient.Show();
         }
     }
 }

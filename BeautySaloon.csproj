@@ -85,16 +85,19 @@
     <Compile Include="controllers\ConnectInfo.cs" />
     <Compile Include="controllers\DBService.cs" />
     <Compile Include="controllers\modules\Cares.cs" />
+    <Compile Include="controllers\modules\Clients.cs" />
     <Compile Include="controllers\modules\DB.cs" />
     <Compile Include="controllers\modules\Employees.cs" />
     <Compile Include="controllers\modules\Skills.cs" />
     <Compile Include="models\Cares.cs" />
+    <Compile Include="models\Clients.cs" />
     <Compile Include="models\DB.cs" />
     <Compile Include="models\Employees.cs" />
     <Compile Include="models\Model.cs" />
     <Compile Include="models\ModelService.cs" />
     <Compile Include="models\Skills.cs" />
     <Compile Include="models\types\CareItem.cs" />
+    <Compile Include="models\types\ClientItem.cs" />
     <Compile Include="models\types\SkillItem.cs" />
     <Compile Include="models\types\EmployeeItem.cs" />
     <Compile Include="utils\Utils.cs" />
@@ -119,6 +122,12 @@
     <Compile Include="views\modals\ChangeCare.Designer.cs">
       <DependentUpon>ChangeCare.cs</DependentUpon>
     </Compile>
+    <Compile Include="views\modals\ChangeClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="views\modals\ChangeClient.Designer.cs">
+      <DependentUpon>ChangeClient.cs</DependentUpon>
+    </Compile>
     <Compile Include="views\modals\ChangeEmployee.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -142,6 +151,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="views\modals\ChangeCare.resx">
       <DependentUpon>ChangeCare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="views\modals\ChangeClient.resx">
+      <DependentUpon>ChangeClient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="views\modals\ChangeEmployee.resx">
       <DependentUpon>ChangeEmployee.cs</DependentUpon>

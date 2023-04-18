@@ -6,11 +6,13 @@
         public Employees employees;
         public Cares cares;
         public Skills skills;
+        public Clients clients;
         public ModelService() {
             db = new DB();
             employees = new Employees();
             cares = new Cares();
             skills = new Skills();
+            clients = new Clients();
         }
         public void setBdName(string name) {
             bdName = name;

@@ -14,8 +14,7 @@ namespace BeautySaloon.controllers
     {
         
         public ModelService modelService = new ModelService();
-        public static MySqlConnection dbConnect;
-        public MySqlCommand cmd;
+        public static MySqlConnection dbConnect;        
         ApiService apiService;
 
          public Boolean init(ConnectInfo connectInfo) {            

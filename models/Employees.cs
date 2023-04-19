@@ -36,7 +36,7 @@ namespace BeautySaloon.models
 
             string sql = $"UPDATE {bdName}.{TableName.employees} " +
                 $"SET FirstName='{employeeItem.firstName}', " +
-                $"SurnName='${employeeItem.surnName}', " +
+                $"SurnName='{employeeItem.surnName}', " +
                 $"MiddleName='{employeeItem.middleName}', " +
                 $"`Position`='{employeeItem.position}' " +
                 $"WHERE Id={employeeItem.id};";

@@ -47,7 +47,7 @@ namespace BeautySaloon.models
 
         public string getTableFilteredData(string str)
         {
-            string sql = $"SELECT * FROM {bdName}.{TableName.clients} WHERE " +
+            string sql = $"SELECT *, CONCAT(FirstName, ' ', SurnName) as FullName FROM {bdName}.{TableName.clients} WHERE " +
                 $"FirstName LIKE '%{str}%' OR " +
                 $"SurnName LIKE '%{str}%' OR " +
                 $"MiddleName LIKE '%{str}%' OR " +

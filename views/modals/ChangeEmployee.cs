@@ -15,33 +15,35 @@ namespace BeautySaloon.views.modals
     public partial class ChangeEmployee : Form
     {
         ApiService apiService = new ApiService();
-        DataGridViewRow selectedRow;
+        DataGridViewRow editedRow;
         Action gridUpdate;
         public ChangeEmployee( Action gridUpdate, DataGridViewRow selectedRow = null)
         {
             InitializeComponent();
-            this.selectedRow = selectedRow;
+            this.editedRow = selectedRow;
             this.gridUpdate = gridUpdate;
-            if (selectedRow != null )
+            if (editedRow != null )
             {
-                textBoxFirstName.Text = selectedRow.Cells["FirstName"].Value.ToString();
-                textBoxSurnName.Text = selectedRow.Cells["SurnName"].Value.ToString();
-                textBoxMiddleName.Text = selectedRow.Cells["MiddleName"].Value.ToString();
-                textBoxPosition.Text = selectedRow.Cells["Position"].Value.ToString();
+                textBoxFirstName.Text = editedRow.Cells["FirstName"].Value.ToString();
+                textBoxSurnName.Text = editedRow.Cells["SurnName"].Value.ToString();
+                textBoxMiddleName.Text = editedRow.Cells["MiddleName"].Value.ToString();
+                textBoxPosition.Text = editedRow.Cells["Position"].Value.ToString();
 
             }
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            EmployeeItem item = new EmployeeItem();
-            item.firstName = textBoxFirstName.Text;
-            item.surnName = textBoxSurnName.Text;
-            item.middleName = textBoxMiddleName.Text;
-            item.position = textBoxPosition.Text;
-            if (selectedRow != null)
+            EmployeeItem item = new EmployeeItem
             {
-                item.id = selectedRow.Cells["Id"].Value.ToString();
+                firstName = textBoxFirstName.Text,
+                surnName = textBoxSurnName.Text,
+                middleName = textBoxMiddleName.Text,
+                position = textBoxPosition.Text
+            };
+            if (editedRow != null)
+            {
+                item.id = editedRow.Cells["Id"].Value.ToString();
                 apiService.employees.editItem(item);
             }
             else {

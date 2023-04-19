@@ -11,18 +11,18 @@ namespace BeautySaloon.models
 {
     internal class Employees : Model
     {
-        string tableName = "Employees";
+        
 
 
         public string getTableData() {
-            string sql = $"SELECT * FROM {bdName}.{tableName};";
+            string sql = $"SELECT * FROM {bdName}.{TableName.employees};";
             return sql ;
         }
 
         public string addRow(EmployeeItem employeeItem)
         {
 
-            string sql = $"INSERT INTO {bdName}.{tableName} (FirstName, SurnName, MiddleName, `Position`) " +
+            string sql = $"INSERT INTO {bdName}.{TableName.employees} (FirstName, SurnName, MiddleName, `Position`) " +
                 $"VALUES" +
                 $"('{employeeItem.firstName}', " +
                 $"'{employeeItem.surnName}'," +
@@ -33,7 +33,7 @@ namespace BeautySaloon.models
         }
         public string editRow(EmployeeItem employeeItem) {
 
-            string sql = $"UPDATE {bdName}.{tableName} " +
+            string sql = $"UPDATE {bdName}.{TableName.employees} " +
                 $"SET FirstName='{employeeItem.firstName}', " +
                 $"SurnName='${employeeItem.surnName}', " +
                 $"MiddleName='{employeeItem.middleName}', " +
@@ -44,7 +44,7 @@ namespace BeautySaloon.models
 
         public string getTableFilteredData(string str) {
 
-            string sql = $"SELECT * FROM {bdName}.{tableName} WHERE " +
+            string sql = $"SELECT * FROM {bdName}.{TableName.employees} WHERE " +
                 $"FirstName LIKE '%{str}%' OR " +
                 $"SurnName LIKE '%{str}%' OR " +
                 $"MiddleName LIKE '%{str}%' OR " +
@@ -52,7 +52,7 @@ namespace BeautySaloon.models
             return sql;
         }
         public string deleteRow(EmployeeItem employeeItem) {
-            string sql = $"DELETE FROM {bdName}.{tableName} " +
+            string sql = $"DELETE FROM {bdName}.{TableName.employees} " +
                 $"WHERE Id={employeeItem.id};";
             return sql;
         }

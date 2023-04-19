@@ -8,36 +8,38 @@ namespace BeautySaloon.views.modals
     public partial class ChangeCare : Form
     {
         ApiService apiService = new ApiService();
-        DataGridViewRow selectedRow;
+        DataGridViewRow editedRow;
         Action gridUpdate;
         public ChangeCare(Action gridUpdate, DataGridViewRow selectedRow = null)
         {
             InitializeComponent();
-            this.selectedRow = selectedRow;
+            this.editedRow = selectedRow;
             this.gridUpdate = gridUpdate;
-            if (selectedRow != null)
+            if (editedRow != null)
             {
-                textBoxName.Text = selectedRow.Cells["Name"].Value.ToString();
-                textBoxPrice.Text = selectedRow.Cells["Price"].Value.ToString();
+                textBoxName.Text = editedRow.Cells["Name"].Value.ToString();
+                textBoxPrice.Text = editedRow.Cells["Price"].Value.ToString();
 
             }
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            
-            CareItem item = new CareItem();
-            item.name = textBoxName.Text;
-            item.price = textBoxPrice.Text;
+
+            CareItem item = new CareItem
+            {
+                name = textBoxName.Text,
+                price = textBoxPrice.Text
+            };
 
             if (!int.TryParse(item.price, out _) || int.Parse(item.price) <= 0) {
                 MessageBox.Show("Некорректная стоимость");
                 return;
             }
 
-            if (selectedRow != null)
+            if (editedRow != null)
             {
-                item.id = selectedRow.Cells["Id"].Value.ToString();
+                item.id = editedRow.Cells["Id"].Value.ToString();
                 apiService.cares.editItem(item);
             }
             else

@@ -10,21 +10,20 @@ namespace BeautySaloon.models
 {
     internal class Skills : Model
     {
-        string tableName = "CareToEmployee";
-
+        
         public string getSkillsIdsByEmployeeId(string idEmployee) {
-            string sql = $"SELECT IdCare FROM {bdName}.{tableName} WHERE IdEmployee={idEmployee};";
+            string sql = $"SELECT IdCare FROM {bdName}.{TableName.skills} WHERE IdEmployee={idEmployee};";
             return sql;
         }
 
         public string addSkillsByEmployeeId(List<string> skills, string id) {            
-            string sql = $"INSERT INTO {bdName}.{tableName} (IdEmployee, IdCare) " +
+            string sql = $"INSERT INTO {bdName}.{TableName.skills} (IdEmployee, IdCare) " +
                 $"VALUES {buildValuesToInsert(skills, id)};";
             return sql;          
         }
 
         public string deleteSkillsByEmployeeId(string id) {
-            string sql = $"DELETE FROM {bdName}.{tableName} WHERE IdEmployee={id};";
+            string sql = $"DELETE FROM {bdName}.{TableName.skills} WHERE IdEmployee={id};";
             return sql;
         }
 

@@ -10,19 +10,17 @@ namespace BeautySaloon.models
 {
     internal class Cares : Model
     {
-        string tableName = "Cares";
-
-
+        
         public string getTableData()
         { 
-            string sql = $"SELECT * FROM {bdName}.{tableName};";
+            string sql = $"SELECT * FROM {bdName}.{TableName.cares};";
             return sql;
         }
 
         public string addRow(CareItem careItem)
         {
 
-            string sql = $"INSERT INTO {bdName}.{tableName} (Name, Price) " +
+            string sql = $"INSERT INTO {bdName}.{TableName.cares} (Name, Price) " +
                 $"VALUES" +
                 $"('{careItem.name}', " +    
                 $"'{careItem.price}');";
@@ -31,7 +29,7 @@ namespace BeautySaloon.models
         }
         public string editRow(CareItem careItem)
         {
-            string sql = $"UPDATE {bdName}.{tableName} " +
+            string sql = $"UPDATE {bdName}.{TableName.cares} " +
                 $"SET Name='{careItem.name}', " +
                 $"Price='{careItem.price}' " +
                 $"WHERE Id={careItem.id};";
@@ -40,14 +38,14 @@ namespace BeautySaloon.models
 
         public string getTableFilteredData(string str)
         {
-            string sql = $"SELECT * FROM {bdName}.{tableName} WHERE " +
+            string sql = $"SELECT * FROM {bdName}.{TableName.cares} WHERE " +
                 $"Name LIKE '%{str}%' OR " +         
                 $"Price LIKE '%{str}%';";
             return sql;
         }
         public string deleteRow(CareItem careItem)
         {
-            string sql = $"DELETE FROM {bdName}.{tableName} " +
+            string sql = $"DELETE FROM {bdName}.{TableName.cares} " +
                 $"WHERE Id={careItem.id};";
             return sql;
         }

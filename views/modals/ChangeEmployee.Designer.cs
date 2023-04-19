@@ -142,6 +142,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ChangeEmployee";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ChangeEmployee";
             this.ResumeLayout(false);
             this.PerformLayout();

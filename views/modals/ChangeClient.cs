@@ -8,37 +8,43 @@ namespace BeautySaloon.views.modals
     public partial class ChangeClient : Form
     {
         ApiService apiService = new ApiService();
-        DataGridViewRow selectedRow;
+        DataGridViewRow editedRow;
         Action gridUpdate;
         public ChangeClient(Action gridUpdate, DataGridViewRow selectedRow = null)
         {
             InitializeComponent();
-            this.selectedRow = selectedRow;
+            this.editedRow = selectedRow;
             this.gridUpdate = gridUpdate;
-            if (selectedRow != null)
+            if (editedRow != null)
             {
-                /*textBoxName.Text = selectedRow.Cells["Name"].Value.ToString();
-                textBoxPrice.Text = selectedRow.Cells["Price"].Value.ToString();*/
+                textBoxFirstName.Text = editedRow.Cells["FirstName"].Value.ToString();
+                textBoxSurnName.Text = editedRow.Cells["SurnName"].Value.ToString();
+                textBoxMiddleName.Text = editedRow.Cells["MiddleName"].Value.ToString();
+                textBoxPhoneNumber.Text = editedRow.Cells["PhoneNumber"].Value.ToString();
+                dateTimePickerBirthName.Text = editedRow.Cells["BirthDate"].Value.ToString();
 
             }
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-
-            CareItem item = new CareItem();
-     /*       item.name = textBoxName.Text;
-            item.price = textBoxPrice.Text;*/
-
-
-            if (selectedRow != null)
+            ClientItem item = new ClientItem
             {
-                item.id = selectedRow.Cells["Id"].Value.ToString();
-                apiService.cares.editItem(item);
+                firstName = textBoxFirstName.Text,
+                surnName = textBoxSurnName.Text,
+                middleName = textBoxMiddleName.Text,
+                phoneNumber = textBoxPhoneNumber.Text,
+                birthDate = dateTimePickerBirthName.Value
+            };
+
+            if (editedRow != null)
+            {
+                item.id = editedRow.Cells["Id"].Value.ToString();
+                apiService.clients.editItem(item);
             }
             else
             {
-                apiService.cares.addItem(item);
+                apiService.clients.addItem(item);
             }
             gridUpdate();
             this.Close();

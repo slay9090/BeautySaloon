@@ -52,15 +52,21 @@
             this.dataGridViewSkills = new System.Windows.Forms.DataGridView();
             this.checkedListBoxSkills = new System.Windows.Forms.CheckedListBox();
             this.tabPageClients = new System.Windows.Forms.TabPage();
-            this.tabPageOrders = new System.Windows.Forms.TabPage();
-            this.btnGenerateBDData = new System.Windows.Forms.Button();
-            this.btnGetData = new System.Windows.Forms.Button();
             this.buttonFilterClients = new System.Windows.Forms.Button();
             this.textBoxFilterClients = new System.Windows.Forms.TextBox();
             this.buttonDeleteClient = new System.Windows.Forms.Button();
             this.buttonChangeClient = new System.Windows.Forms.Button();
             this.dataGridViewClients = new System.Windows.Forms.DataGridView();
             this.buttonAddClient = new System.Windows.Forms.Button();
+            this.tabPageOrders = new System.Windows.Forms.TabPage();
+            this.btnGenerateBDData = new System.Windows.Forms.Button();
+            this.btnGetData = new System.Windows.Forms.Button();
+            this.buttonFilterOrders = new System.Windows.Forms.Button();
+            this.textBoxOrdersFilter = new System.Windows.Forms.TextBox();
+            this.dataGridViewOrders = new System.Windows.Forms.DataGridView();
+            this.buttonCreateOrder = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabControlMain.SuspendLayout();
             this.tabPageEmployee.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).BeginInit();
@@ -71,6 +77,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSkills)).BeginInit();
             this.tabPageClients.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClients)).BeginInit();
+            this.tabPageOrders.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlMain
@@ -86,7 +94,7 @@
             this.tabControlMain.Size = new System.Drawing.Size(807, 452);
             this.tabControlMain.TabIndex = 0;
             this.tabControlMain.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
-            this.tabControlMain.Click += new System.EventHandler(this.tabControlMain_Click);
+        
             // 
             // tabPageEmployee
             // 
@@ -183,6 +191,7 @@
             this.tabPageCares.TabIndex = 1;
             this.tabPageCares.Text = "Услуги";
             this.tabPageCares.UseVisualStyleBackColor = true;
+            this.tabPageCares.Paint += new System.Windows.Forms.PaintEventHandler(this.tabPageCares_Paint);
             // 
             // buttonCareSearch
             // 
@@ -260,8 +269,8 @@
             this.tabPageSkills.Size = new System.Drawing.Size(799, 419);
             this.tabPageSkills.TabIndex = 2;
             this.tabPageSkills.Text = "Навыки";
-            this.tabPageSkills.UseVisualStyleBackColor = true;
-            this.tabPageSkills.Click += new System.EventHandler(this.tabPageSkills_Click);
+            this.tabPageSkills.UseVisualStyleBackColor = true;         
+            this.tabPageSkills.Paint += new System.Windows.Forms.PaintEventHandler(this.tabPageSkills_Paint);
             // 
             // buttonSaveSkills
             // 
@@ -303,8 +312,7 @@
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(787, 356);
-            this.tableLayoutPanel1.TabIndex = 0;
-            this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint);
+            this.tableLayoutPanel1.TabIndex = 0;           
             // 
             // dataGridViewSkills
             // 
@@ -348,35 +356,7 @@
             this.tabPageClients.TabIndex = 3;
             this.tabPageClients.Text = "Клиенты";
             this.tabPageClients.UseVisualStyleBackColor = true;
-            // 
-            // tabPageOrders
-            // 
-            this.tabPageOrders.Location = new System.Drawing.Point(4, 29);
-            this.tabPageOrders.Name = "tabPageOrders";
-            this.tabPageOrders.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageOrders.Size = new System.Drawing.Size(799, 419);
-            this.tabPageOrders.TabIndex = 4;
-            this.tabPageOrders.Text = "Заказы";
-            this.tabPageOrders.UseVisualStyleBackColor = true;
-            // 
-            // btnGenerateBDData
-            // 
-            this.btnGenerateBDData.Location = new System.Drawing.Point(196, 12);
-            this.btnGenerateBDData.Name = "btnGenerateBDData";
-            this.btnGenerateBDData.Size = new System.Drawing.Size(174, 32);
-            this.btnGenerateBDData.TabIndex = 1;
-            this.btnGenerateBDData.Text = "Сгененировать БД";
-            this.btnGenerateBDData.UseVisualStyleBackColor = true;
-            // 
-            // btnGetData
-            // 
-            this.btnGetData.Location = new System.Drawing.Point(16, 12);
-            this.btnGetData.Name = "btnGetData";
-            this.btnGetData.Size = new System.Drawing.Size(174, 32);
-            this.btnGetData.TabIndex = 2;
-            this.btnGetData.Text = "Обновить";
-            this.btnGetData.UseVisualStyleBackColor = true;
-            this.btnGetData.Click += new System.EventHandler(this.btnGetData_Click);
+            this.tabPageClients.Paint += new System.Windows.Forms.PaintEventHandler(this.tabPageClients_Paint);
             // 
             // buttonFilterClients
             // 
@@ -386,6 +366,7 @@
             this.buttonFilterClients.TabIndex = 12;
             this.buttonFilterClients.Text = "Найти";
             this.buttonFilterClients.UseVisualStyleBackColor = true;
+            this.buttonFilterClients.Click += new System.EventHandler(this.buttonFilterClients_Click);
             // 
             // textBoxFilterClients
             // 
@@ -402,6 +383,7 @@
             this.buttonDeleteClient.TabIndex = 10;
             this.buttonDeleteClient.Text = "Удалить";
             this.buttonDeleteClient.UseVisualStyleBackColor = true;
+            this.buttonDeleteClient.Click += new System.EventHandler(this.buttonDeleteClient_Click);
             // 
             // buttonChangeClient
             // 
@@ -411,6 +393,7 @@
             this.buttonChangeClient.TabIndex = 9;
             this.buttonChangeClient.Text = "Изменить";
             this.buttonChangeClient.UseVisualStyleBackColor = true;
+            this.buttonChangeClient.Click += new System.EventHandler(this.buttonChangeClient_Click);
             // 
             // dataGridViewClients
             // 
@@ -439,6 +422,103 @@
             this.buttonAddClient.UseVisualStyleBackColor = true;
             this.buttonAddClient.Click += new System.EventHandler(this.buttonAddClient_Click);
             // 
+            // tabPageOrders
+            // 
+            this.tabPageOrders.Controls.Add(this.button2);
+            this.tabPageOrders.Controls.Add(this.button1);
+            this.tabPageOrders.Controls.Add(this.buttonFilterOrders);
+            this.tabPageOrders.Controls.Add(this.textBoxOrdersFilter);
+            this.tabPageOrders.Controls.Add(this.dataGridViewOrders);
+            this.tabPageOrders.Controls.Add(this.buttonCreateOrder);
+            this.tabPageOrders.Location = new System.Drawing.Point(4, 29);
+            this.tabPageOrders.Name = "tabPageOrders";
+            this.tabPageOrders.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageOrders.Size = new System.Drawing.Size(799, 419);
+            this.tabPageOrders.TabIndex = 4;
+            this.tabPageOrders.Text = "Заказы";
+            this.tabPageOrders.UseVisualStyleBackColor = true;
+            this.tabPageOrders.Paint += new System.Windows.Forms.PaintEventHandler(this.tabPageOrders_Paint);
+            // 
+            // btnGenerateBDData
+            // 
+            this.btnGenerateBDData.Location = new System.Drawing.Point(196, 12);
+            this.btnGenerateBDData.Name = "btnGenerateBDData";
+            this.btnGenerateBDData.Size = new System.Drawing.Size(174, 32);
+            this.btnGenerateBDData.TabIndex = 1;
+            this.btnGenerateBDData.Text = "Сгененировать БД";
+            this.btnGenerateBDData.UseVisualStyleBackColor = true;
+            // 
+            // btnGetData
+            // 
+            this.btnGetData.Location = new System.Drawing.Point(16, 12);
+            this.btnGetData.Name = "btnGetData";
+            this.btnGetData.Size = new System.Drawing.Size(174, 32);
+            this.btnGetData.TabIndex = 2;
+            this.btnGetData.Text = "Обновить";
+            this.btnGetData.UseVisualStyleBackColor = true;
+            this.btnGetData.Click += new System.EventHandler(this.btnGetData_Click);
+            // 
+            // buttonFilterOrders
+            // 
+            this.buttonFilterOrders.Location = new System.Drawing.Point(237, 9);
+            this.buttonFilterOrders.Name = "buttonFilterOrders";
+            this.buttonFilterOrders.Size = new System.Drawing.Size(100, 35);
+            this.buttonFilterOrders.TabIndex = 16;
+            this.buttonFilterOrders.Text = "Найти";
+            this.buttonFilterOrders.UseVisualStyleBackColor = true;
+            // 
+            // textBoxOrdersFilter
+            // 
+            this.textBoxOrdersFilter.Location = new System.Drawing.Point(6, 13);
+            this.textBoxOrdersFilter.Name = "textBoxOrdersFilter";
+            this.textBoxOrdersFilter.Size = new System.Drawing.Size(225, 26);
+            this.textBoxOrdersFilter.TabIndex = 15;
+            // 
+            // dataGridViewOrders
+            // 
+            this.dataGridViewOrders.AllowUserToAddRows = false;
+            this.dataGridViewOrders.AllowUserToDeleteRows = false;
+            this.dataGridViewOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dataGridViewOrders.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridViewOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewOrders.Location = new System.Drawing.Point(6, 50);
+            this.dataGridViewOrders.MultiSelect = false;
+            this.dataGridViewOrders.Name = "dataGridViewOrders";
+            this.dataGridViewOrders.ReadOnly = true;
+            this.dataGridViewOrders.RowHeadersWidth = 25;
+            this.dataGridViewOrders.RowTemplate.Height = 28;
+            this.dataGridViewOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewOrders.Size = new System.Drawing.Size(787, 359);
+            this.dataGridViewOrders.TabIndex = 14;
+            // 
+            // buttonCreateOrder
+            // 
+            this.buttonCreateOrder.Location = new System.Drawing.Point(693, 9);
+            this.buttonCreateOrder.Name = "buttonCreateOrder";
+            this.buttonCreateOrder.Size = new System.Drawing.Size(100, 35);
+            this.buttonCreateOrder.TabIndex = 13;
+            this.buttonCreateOrder.Text = "Создать";
+            this.buttonCreateOrder.UseVisualStyleBackColor = true;
+            this.buttonCreateOrder.Click += new System.EventHandler(this.buttonCreateOrder_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(587, 9);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 35);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "Исполнен";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(481, 9);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(100, 35);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "Отменён";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -450,8 +530,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Салон красоты";
-            this.Load += new System.EventHandler(this.Main_Load);
+            this.Load += new System.EventHandler(this.Main_Load);         
             this.tabControlMain.ResumeLayout(false);
             this.tabPageEmployee.ResumeLayout(false);
             this.tabPageEmployee.PerformLayout();
@@ -466,6 +547,9 @@
             this.tabPageClients.ResumeLayout(false);
             this.tabPageClients.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClients)).EndInit();
+            this.tabPageOrders.ResumeLayout(false);
+            this.tabPageOrders.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -504,5 +588,11 @@
         private System.Windows.Forms.Button buttonChangeClient;
         private System.Windows.Forms.DataGridView dataGridViewClients;
         private System.Windows.Forms.Button buttonAddClient;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonFilterOrders;
+        private System.Windows.Forms.TextBox textBoxOrdersFilter;
+        private System.Windows.Forms.DataGridView dataGridViewOrders;
+        private System.Windows.Forms.Button buttonCreateOrder;
     }
 }

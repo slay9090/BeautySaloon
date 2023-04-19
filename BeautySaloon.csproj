@@ -88,6 +88,7 @@
     <Compile Include="controllers\modules\Clients.cs" />
     <Compile Include="controllers\modules\DB.cs" />
     <Compile Include="controllers\modules\Employees.cs" />
+    <Compile Include="controllers\modules\Orders.cs" />
     <Compile Include="controllers\modules\Skills.cs" />
     <Compile Include="models\Cares.cs" />
     <Compile Include="models\Clients.cs" />
@@ -95,9 +96,11 @@
     <Compile Include="models\Employees.cs" />
     <Compile Include="models\Model.cs" />
     <Compile Include="models\ModelService.cs" />
+    <Compile Include="models\Orders.cs" />
     <Compile Include="models\Skills.cs" />
     <Compile Include="models\types\CareItem.cs" />
     <Compile Include="models\types\ClientItem.cs" />
+    <Compile Include="models\types\OrderItem.cs" />
     <Compile Include="models\types\SkillItem.cs" />
     <Compile Include="models\types\EmployeeItem.cs" />
     <Compile Include="utils\Utils.cs" />

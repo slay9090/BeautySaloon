@@ -109,6 +109,33 @@ namespace BeautySaloon.views
             
         }
 
+        public void updatedOrdersData()
+        {
+            dataGridViewOrders.DataSource = apiService.orders.getData();
+            tableOrdersSetView(dataGridViewOrders);
+        }
+
+        private void tableOrdersSetView(DataGridView dataGrid)
+        {
+            dataGrid.Columns["IdClient"].Visible = false;
+            dataGrid.Columns["IdEmployee"].Visible = false;
+            dataGrid.Columns["IdCare"].Visible = false;
+            foreach (DataGridViewRow row in dataGrid.Rows) {                
+
+                if (row.Cells["Статус"].Value.ToString() == "completed")
+                {
+                    row.DefaultCellStyle.ForeColor = Color.Green;
+                }
+                if (row.Cells["Статус"].Value.ToString() == "canceled")
+                {
+                    row.DefaultCellStyle.ForeColor = Color.DarkGray;
+                }
+            }
+                
+              
+
+        }
+
 
 
 
@@ -118,13 +145,15 @@ namespace BeautySaloon.views
 
 
 
-     
+
 
         private void btnGetData_Click(object sender, EventArgs e)
-        {          
-           //getEmployeesData();
-            
-           
+        { 
+            updatedEmployeesData();
+            updatedCaresData();
+            updatedSkillsEmployeeData();
+            updatedClientsData();
+            updatedOrdersData();
         }
 
  
@@ -178,24 +207,14 @@ namespace BeautySaloon.views
         private void Main_Load(object sender, EventArgs e)
         {
             updatedEmployeesData();
-            updatedCaresData();
-            updatedSkillsEmployeeData();
-            updatedClientsData();            
         }
         private void tabControl1_Selected(object sender, TabControlEventArgs e)
         {
-
-
-            //setCheckedSkillsByEmployee();
-
-            Console.WriteLine(e.TabPage);
-            Console.WriteLine(tabPageSkills);
-            if (e.TabPage == tabPageSkills) {
-                dataGridViewSkills.Rows[0].Selected = true;
-                updatedCheckedSkillsByEmployee();
-            }
-
-
+    /*        if (e.TabPage == tabPageSkills) {
+            *//*    dataGridViewSkills.Rows[0].Selected = true;
+                updatedCheckedSkillsByEmployee();*//*
+            }*/
+ 
         }
 
 
@@ -245,11 +264,6 @@ namespace BeautySaloon.views
             tableCaresSetView(dataGridViewCares);
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void buttonSaveSkills_Click(object sender, EventArgs e)
         {
             if (dataGridViewSkills.SelectedRows.Count != 0)
@@ -279,20 +293,11 @@ namespace BeautySaloon.views
             }
         }
 
-        private void tabControlMain_Click(object sender, EventArgs e)
-        {
-      
-        }
-
-        private void tabPageSkills_Click(object sender, EventArgs e)
-        {
-           
-        }
+ 
 
         private void dataGridViewSkills_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            DataGridViewRow row = dataGridViewSkills.Rows[e.RowIndex];
-            //string idEmployee = row.Cells["Id"].Value.ToString();
+            DataGridViewRow row = dataGridViewSkills.Rows[e.RowIndex];    
             updatedCheckedSkillsByEmployee();
         }
 
@@ -300,6 +305,74 @@ namespace BeautySaloon.views
         {
             ChangeClient changeClient = new ChangeClient(updatedClientsData);
             changeClient.Show();
+        }
+
+        private void buttonChangeClient_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewClients.SelectedRows.Count != 0)
+            {
+                ChangeClient changeClient = new ChangeClient(updatedClientsData, dataGridViewClients.SelectedRows[0]);
+                changeClient.Show();
+            }
+            else
+            {
+                MessageBox.Show("ничего не выбранно");
+            }
+      
+        }
+
+        private void buttonDeleteClient_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewClients.SelectedRows.Count != 0)
+            {
+                ClientItem clientItem = new ClientItem
+                {
+                    id = dataGridViewClients.SelectedRows[0].Cells["Id"].Value.ToString()
+                };
+                apiService.clients.deleteItem(clientItem);
+                updatedClientsData();
+            }            
+            else
+            {
+                MessageBox.Show("ничего не выбранно");
+            }
+        }
+
+        private void buttonFilterClients_Click(object sender, EventArgs e)
+        {
+            var data = apiService.clients.getFilteredData(textBoxFilterClients.Text);
+            dataGridViewClients.DataSource = data;
+            tableClientsSetView(dataGridViewClients);
+        }
+
+        private void buttonCreateOrder_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+
+
+        private void tabPageOrders_Paint(object sender, PaintEventArgs e)
+        {
+            updatedOrdersData();
+        }
+
+        private void tabPageSkills_Paint(object sender, PaintEventArgs e)
+        {
+            updatedSkillsEmployeeData();
+            dataGridViewSkills.Rows[0].Selected = true;
+            updatedCheckedSkillsByEmployee();
+            
+        }
+
+        private void tabPageCares_Paint(object sender, PaintEventArgs e)
+        {
+            updatedCaresData();
+        }
+
+        private void tabPageClients_Paint(object sender, PaintEventArgs e)
+        {
+            updatedClientsData();
         }
     }
 }

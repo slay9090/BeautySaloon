@@ -22,7 +22,7 @@ namespace BeautySaloon.controllers.modules
                 clientsItem.firstName,
                 clientsItem.surnName,
                 clientsItem.phoneNumber,
-                clientsItem.birthDate
+                clientsItem.birthDate.ToString(),
             };
             Utils.DBAdapter.setBdData(dbConnect, modelService.clients.addRow(clientsItem), requiredElems);
 
@@ -34,9 +34,10 @@ namespace BeautySaloon.controllers.modules
                 clientsItem.firstName,
                 clientsItem.surnName,
                 clientsItem.phoneNumber,
-                clientsItem.birthDate,
+                clientsItem.birthDate.ToString(),
                 clientsItem.id
             };
+            Console.WriteLine(modelService.clients.editRow(clientsItem));
             Utils.DBAdapter.setBdData(dbConnect,
                 modelService.clients.editRow(clientsItem),
                 requiredElems);

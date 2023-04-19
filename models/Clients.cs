@@ -11,42 +11,42 @@ namespace BeautySaloon.models
 {
     internal class Clients : Model
     {
-        string tableName = "Clients";
+        
 
 
         public string getTableData()
         {
-            string sql = $"SELECT * FROM {bdName}.{tableName};";
+            string sql = $"SELECT * FROM {bdName}.{TableName.clients};";
             return sql;
         }
         public string addRow(ClientItem clientsItem)
         {
 
-            string sql = $"INSERT INTO {bdName}.{tableName} (FirstName, SurnName, MiddleName, PhoneNumber, BirthDate) " +
+            string sql = $"INSERT INTO {bdName}.{TableName.clients} (FirstName, SurnName, MiddleName, PhoneNumber, BirthDate) " +
                         $"VALUES" +
                         $"('{clientsItem.firstName}', " +
                         $"'{clientsItem.surnName}'," +
                         $"'{clientsItem.middleName}'," +
                         $"'{clientsItem.phoneNumber}'," +
-                        $"'{clientsItem.birthDate}');";
+                        $"'{clientsItem.birthDate:yyyy-MM-dd}');";
 
             return sql;
         }
         public string editRow(ClientItem clientsItem)
         {
-            string sql = $"UPDATE {bdName}.{tableName} " +
+            string sql = $"UPDATE {bdName}.{TableName.clients} " +
                 $"SET FirstName='{clientsItem.firstName}', " +
-                $"SurnName='${clientsItem.surnName}', " +
+                $"SurnName='{clientsItem.surnName}', " +
                 $"MiddleName='{clientsItem.middleName}', " +
-                $"PhoneNumber='{clientsItem.phoneNumber}' " +
-                $"BirthDate='{clientsItem.birthDate}' " +
+                $"PhoneNumber='{clientsItem.phoneNumber}', " +
+                $"BirthDate='{clientsItem.birthDate:yyyy-MM-dd}' " +
                 $"WHERE Id={clientsItem.id};";
             return sql;
         }
 
         public string getTableFilteredData(string str)
         {
-            string sql = $"SELECT * FROM {bdName}.{tableName} WHERE " +
+            string sql = $"SELECT * FROM {bdName}.{TableName.clients} WHERE " +
                 $"FirstName LIKE '%{str}%' OR " +
                 $"SurnName LIKE '%{str}%' OR " +
                 $"MiddleName LIKE '%{str}%' OR " +
@@ -55,7 +55,7 @@ namespace BeautySaloon.models
         }
         public string deleteRow(ClientItem clientsItem)
         {
-            string sql = $"DELETE FROM {bdName}.{tableName} " +
+            string sql = $"DELETE FROM {bdName}.{TableName.clients} " +
                 $"WHERE Id={clientsItem.id};";
             return sql;
         }

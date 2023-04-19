@@ -30,16 +30,16 @@
         {
             this.textBoxFirstName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxSurnName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxMiddleName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBoxPhoneNumber = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.buttonSave = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerBirthName = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // textBoxFirstName
@@ -58,12 +58,12 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Фамилия";
             // 
-            // textBox1
+            // textBoxSurnName
             // 
-            this.textBox1.Location = new System.Drawing.Point(16, 105);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(337, 26);
-            this.textBox1.TabIndex = 5;
+            this.textBoxSurnName.Location = new System.Drawing.Point(16, 105);
+            this.textBoxSurnName.Name = "textBoxSurnName";
+            this.textBoxSurnName.Size = new System.Drawing.Size(337, 26);
+            this.textBoxSurnName.TabIndex = 5;
             // 
             // label2
             // 
@@ -74,12 +74,12 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Имя";
             // 
-            // textBox2
+            // textBoxMiddleName
             // 
-            this.textBox2.Location = new System.Drawing.Point(16, 171);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(337, 26);
-            this.textBox2.TabIndex = 7;
+            this.textBoxMiddleName.Location = new System.Drawing.Point(16, 171);
+            this.textBoxMiddleName.Name = "textBoxMiddleName";
+            this.textBoxMiddleName.Size = new System.Drawing.Size(337, 26);
+            this.textBoxMiddleName.TabIndex = 7;
             // 
             // label3
             // 
@@ -90,12 +90,12 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Отчество";
             // 
-            // textBox3
+            // textBoxPhoneNumber
             // 
-            this.textBox3.Location = new System.Drawing.Point(16, 237);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(337, 26);
-            this.textBox3.TabIndex = 9;
+            this.textBoxPhoneNumber.Location = new System.Drawing.Point(16, 237);
+            this.textBoxPhoneNumber.Name = "textBoxPhoneNumber";
+            this.textBoxPhoneNumber.Size = new System.Drawing.Size(337, 26);
+            this.textBoxPhoneNumber.TabIndex = 9;
             // 
             // label4
             // 
@@ -135,27 +135,27 @@
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
-            // dateTimePicker1
+            // dateTimePickerBirthName
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(16, 303);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(337, 26);
-            this.dateTimePicker1.TabIndex = 22;
+            this.dateTimePickerBirthName.Location = new System.Drawing.Point(16, 303);
+            this.dateTimePickerBirthName.Name = "dateTimePickerBirthName";
+            this.dateTimePickerBirthName.Size = new System.Drawing.Size(337, 26);
+            this.dateTimePickerBirthName.TabIndex = 22;
             // 
             // ChangeClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(365, 428);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dateTimePickerBirthName);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBoxPhoneNumber);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBoxMiddleName);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxSurnName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxFirstName);
             this.Controls.Add(this.label1);
@@ -163,6 +163,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ChangeClient";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Client";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -173,15 +174,15 @@
 
         private System.Windows.Forms.TextBox textBoxFirstName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxSurnName;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxMiddleName;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBoxPhoneNumber;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Button buttonCancel;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerBirthName;
     }
 }

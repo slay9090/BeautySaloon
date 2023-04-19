@@ -15,6 +15,7 @@ namespace BeautySaloon.controllers
         public modules.Cares cares;
         public modules.Skills skills;
         public modules.Clients clients;
+        public modules.Orders orders;
 
         public ApiService() {
             employees = new modules.Employees();
@@ -22,6 +23,7 @@ namespace BeautySaloon.controllers
             cares = new modules.Cares();
             skills = new modules.Skills();
             clients = new modules.Clients();
+            orders = new modules.Orders();
         
         }
     }

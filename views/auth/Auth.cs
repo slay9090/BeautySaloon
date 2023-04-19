@@ -27,7 +27,7 @@ namespace BeautySaloon
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("ADASDASASDDS");
+
             ConnectInfo connectInfo = new ConnectInfo(
                 textBoxUserName.Text, 
                 textBoxPassword.Text, 
@@ -35,8 +35,8 @@ namespace BeautySaloon
                 textBoxPort.Text,
                 textBoxDbName.Text
                 );
-           Boolean isConnect = dbService.init(connectInfo);
-            Console.WriteLine(isConnect);
+  
+            Boolean isConnect = dbService.init(connectInfo);
             if ( isConnect )
             {                
                 this.Hide();

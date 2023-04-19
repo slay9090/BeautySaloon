@@ -31,8 +31,7 @@ namespace BeautySaloon.controllers.modules
             DataTable dt = (DataTable)bs.DataSource;
             foreach (DataRow row in dt.Rows)
             {
-                ids.Add(row["IdCare"].ToString());
-                Console.WriteLine("row = " + row["IdCare"].ToString());
+                ids.Add(row["IdCare"].ToString());                
             }
             return ids;            
         }

@@ -99,7 +99,6 @@ namespace BeautySaloon.views
 
             DataGridViewRow selectedRow = dataGridViewSkills.SelectedRows[0];
             string idEmployee = selectedRow.Cells["Id"].Value.ToString();
-            Console.WriteLine("idEmployee" + idEmployee);
             List<string> ids = apiService.skills.getCaresIdsByEmployeeId(idEmployee);
             for (int i = 0; i < checkedListBoxSkills.Items.Count; i++) {
                 DataRowView item = (DataRowView)checkedListBoxSkills.Items[i];                
@@ -400,6 +399,23 @@ namespace BeautySaloon.views
             };
             apiService.orders.editStatus(orderItem);
             updatedOrdersData();
+        }
+
+        private void btnGenerateBDData_Click(object sender, EventArgs e)
+        {
+            try {
+                apiService.db.drop();
+                apiService.db.createShema();
+                apiService.db.generateData();
+                updatedEmployeesData();
+                updatedCaresData();
+                updatedSkillsEmployeeData();
+                updatedClientsData();
+                updatedOrdersData();
+            } 
+            catch(Exception ex) {
+                MessageBox.Show("Не возможно сгенерировать тестовую базу данных" + ex);
+            }
         }
     }
 }

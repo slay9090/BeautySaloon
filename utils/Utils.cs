@@ -16,8 +16,9 @@ namespace BeautySaloon.utils
     {
 
         public class Tools {
-            public static Boolean isEmptyElemInArray(string[] arr)
+            public static Boolean isEmptyRequireElemInArray(string[] arr)
             {
+                if (arr == null || arr.Length == 0) return false;
                 foreach (string el in arr)
                 {
                     if (string.IsNullOrEmpty(el)) return true;
@@ -30,10 +31,10 @@ namespace BeautySaloon.utils
 
         public class DBAdapter : Tools
         {
-            public static void setBdData(MySqlConnection dbConnect, string sqlCommand, string[] requiredFields)
+            public static void setBdData(MySqlConnection dbConnect, string sqlCommand, string[] requiredFields = null)
             {
 
-                if (!isEmptyElemInArray(requiredFields))
+                if (!isEmptyRequireElemInArray(requiredFields))
                 {
                     try
                     {

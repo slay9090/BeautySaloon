@@ -36,8 +36,7 @@ namespace BeautySaloon.controllers.modules
                 clientsItem.phoneNumber,
                 clientsItem.birthDate.ToString(),
                 clientsItem.id
-            };
-            Console.WriteLine(modelService.clients.editRow(clientsItem));
+            };            
             Utils.DBAdapter.setBdData(dbConnect,
                 modelService.clients.editRow(clientsItem),
                 requiredElems);

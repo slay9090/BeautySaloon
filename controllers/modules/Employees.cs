@@ -29,8 +29,7 @@ namespace BeautySaloon.controllers.modules
             Utils.DBAdapter.setBdData(dbConnect, modelService.employees.addRow(employeeItem), requiredElems);
             
         }
-        public void editItem(EmployeeItem employeeItem) {
-            Console.WriteLine("edit" + employeeItem.id);
+        public void editItem(EmployeeItem employeeItem) {            
             string[] requiredElems = {
                 employeeItem.firstName,
                 employeeItem.surnName,

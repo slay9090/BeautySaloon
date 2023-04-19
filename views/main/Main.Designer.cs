@@ -507,6 +507,7 @@
             this.btnGenerateBDData.TabIndex = 1;
             this.btnGenerateBDData.Text = "Сгененировать БД";
             this.btnGenerateBDData.UseVisualStyleBackColor = true;
+            this.btnGenerateBDData.Click += new System.EventHandler(this.btnGenerateBDData_Click);
             // 
             // btnGetData
             // 

@@ -22,8 +22,7 @@ namespace BeautySaloon.controllers.modules
 
         public void addCaresByEmployeeId(List<string> skills, string id) {
             string[] requiredElems = { id };
-            if (!skills.Any()) { return; }
-            Console.WriteLine(modelService.skills.addSkillsByEmployeeId(skills, id));
+            if (!skills.Any()) { return; }           
             Utils.DBAdapter.setBdData(dbConnect, modelService.skills.addSkillsByEmployeeId(skills, id), requiredElems);
         }
         public List<string> getCaresIdsByEmployeeId(string employeeId) {

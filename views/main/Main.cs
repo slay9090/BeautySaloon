@@ -39,6 +39,7 @@ namespace BeautySaloon.views
 
         private void tableEmployeeSetView(DataGridView dataGrid)
         {
+            if (dataGrid.Rows.Count <= 0) return;
             dataGrid.Columns["Id"].Visible = false;
             dataGrid.Columns["FirstName"].HeaderText = "Фамилия";
             dataGrid.Columns["SurnName"].HeaderText = "Имя";
@@ -54,7 +55,9 @@ namespace BeautySaloon.views
 
         private void tableClientsSetView(DataGridView dataGrid)
         {
+            if(dataGrid.Rows.Count <=0) return;
             dataGrid.Columns["Id"].Visible = false;
+            dataGrid.Columns["FullName"].Visible = false;
             dataGrid.Columns["FirstName"].HeaderText = "Фамилия";
             dataGrid.Columns["SurnName"].HeaderText = "Имя";
             dataGrid.Columns["MiddleName"].HeaderText = "Отчество";
@@ -69,6 +72,7 @@ namespace BeautySaloon.views
         }
         private void tableCaresSetView(DataGridView dataGrid)
         {
+            if (dataGrid.Rows.Count <= 0) return;
             dataGrid.Columns["Id"].Visible = false;
             dataGrid.Columns["Name"].HeaderText = "Название";
             dataGrid.Columns["Price"].HeaderText = "Стоимость";
@@ -80,6 +84,7 @@ namespace BeautySaloon.views
         }
 
         private void tableSkillsEmployeeSetView(DataGridView dataGrid) {
+            if (dataGrid.Rows.Count <= 0) return;
             dataGrid.Columns["Id"].Visible = false;
             dataGrid.Columns["FirstName"].HeaderText = "Фамилия";
             dataGrid.Columns["SurnName"].HeaderText = "Имя";
@@ -117,22 +122,10 @@ namespace BeautySaloon.views
 
         private void tableOrdersSetView(DataGridView dataGrid)
         {
+            if (dataGrid.Rows.Count <= 0) return;
             dataGrid.Columns["IdClient"].Visible = false;
             dataGrid.Columns["IdEmployee"].Visible = false;
-            dataGrid.Columns["IdCare"].Visible = false;
-            foreach (DataGridViewRow row in dataGrid.Rows) {                
-
-                if (row.Cells["Статус"].Value.ToString() == "completed")
-                {
-                    row.DefaultCellStyle.ForeColor = Color.Green;
-                }
-                if (row.Cells["Статус"].Value.ToString() == "canceled")
-                {
-                    row.DefaultCellStyle.ForeColor = Color.DarkGray;
-                }
-            }
-                
-              
+            dataGrid.Columns["IdCare"].Visible = false;             
 
         }
 
@@ -166,34 +159,28 @@ namespace BeautySaloon.views
 
         private void buttonChangeEmployee_Click(object sender, EventArgs e)
         {
-            if (dataGridViewEmployee.SelectedRows.Count != 0)
+            if (dataGridViewEmployee.SelectedRows.Count <= 0)
             {
-                DataGridViewRow selectedRow = dataGridViewEmployee.SelectedRows[0];
-                ChangeEmployee changeEmployee = new ChangeEmployee(updatedEmployeesData, selectedRow);
-                changeEmployee.Show();
-                
+                MessageBox.Show("ничего не выбранно");
+                return;
             }
-            else {
-                MessageBox.Show("ничего не выбранно");               
-            }
-               
+            DataGridViewRow selectedRow = dataGridViewEmployee.SelectedRows[0];
+            ChangeEmployee changeEmployee = new ChangeEmployee(updatedEmployeesData, selectedRow);
+            changeEmployee.Show();               
         }  
 
         private void buttonDeleteEmployee_Click(object sender, EventArgs e)
         {
-            if (dataGridViewEmployee.SelectedRows.Count != 0)
-            {
-                DataGridViewRow selectedRow = dataGridViewEmployee.SelectedRows[0];
-                EmployeeItem employeeItem = new EmployeeItem();
-                employeeItem.id = selectedRow.Cells["Id"].Value.ToString();
-                apiService.employees.deleteItem(employeeItem);
-                updatedEmployeesData();
-            }
-            else
+            if (dataGridViewEmployee.SelectedRows.Count <= 0)
             {
                 MessageBox.Show("ничего не выбранно");
-
+                return;
             }
+            DataGridViewRow selectedRow = dataGridViewEmployee.SelectedRows[0];
+            EmployeeItem employeeItem = new EmployeeItem();
+            employeeItem.id = selectedRow.Cells["Id"].Value.ToString();
+            apiService.employees.deleteItem(employeeItem);
+            updatedEmployeesData();
         }
 
         private void buttonFilteredItems_Click(object sender, EventArgs e)
@@ -210,11 +197,30 @@ namespace BeautySaloon.views
         }
         private void tabControl1_Selected(object sender, TabControlEventArgs e)
         {
-    /*        if (e.TabPage == tabPageSkills) {
-            *//*    dataGridViewSkills.Rows[0].Selected = true;
-                updatedCheckedSkillsByEmployee();*//*
-            }*/
+            if (e.TabPage == tabPageSkills)
+            {
+                updatedSkillsEmployeeData();
+                dataGridViewSkills.Rows[0].Selected = true;
+                updatedCheckedSkillsByEmployee();
+            }
+            if (e.TabPage == tabPageEmployee)
+            {          
+                updatedEmployeesData();
+            }
+            if (e.TabPage == tabPageCares)
+            {
+                updatedCaresData();
+            }
+            if (e.TabPage == tabPageClients)
+            {
+                updatedClientsData();
+            }
+            if (e.TabPage == tabPageOrders)
+            {
+                updatedOrdersData();             
  
+            }
+
         }
 
 
@@ -228,33 +234,29 @@ namespace BeautySaloon.views
 
         private void buttonCareEditItem_Click(object sender, EventArgs e)
         {
-            if (dataGridViewCares.SelectedRows.Count != 0)
-            {
-                DataGridViewRow selectedRow = dataGridViewCares.SelectedRows[0];
-                ChangeCare changeCare = new ChangeCare(updatedCaresData, selectedRow);
-                changeCare.Show();
-
-            }
-            else
+            if (dataGridViewCares.SelectedRows.Count <= 0)
             {
                 MessageBox.Show("ничего не выбранно");
+                return;
             }
+            DataGridViewRow selectedRow = dataGridViewCares.SelectedRows[0];
+            ChangeCare changeCare = new ChangeCare(updatedCaresData, selectedRow);
+            changeCare.Show();
         }
 
         private void buttonCareDeleteItem_Click(object sender, EventArgs e)
         {
-            if (dataGridViewCares.SelectedRows.Count != 0)
-            {
-                DataGridViewRow selectedRow = dataGridViewCares.SelectedRows[0];
-                CareItem careItem = new CareItem();
-                careItem.id = selectedRow.Cells["Id"].Value.ToString();
-                apiService.cares.deleteItem(careItem);
-                updatedCaresData();
-            }
-            else
+            if (dataGridViewCares.SelectedRows.Count <= 0)
             {
                 MessageBox.Show("ничего не выбранно");
+                return;
             }
+            DataGridViewRow selectedRow = dataGridViewCares.SelectedRows[0];
+            CareItem careItem = new CareItem();
+            careItem.id = selectedRow.Cells["Id"].Value.ToString();
+            apiService.cares.deleteItem(careItem);
+            updatedCaresData();
+
         }
 
         private void buttonCareSearch_Click(object sender, EventArgs e)
@@ -284,8 +286,6 @@ namespace BeautySaloon.views
                 catch(Exception ex) {
                     Console.WriteLine(ex);
                 }
-             
-                //getCaresData();
             }
             else
             {
@@ -309,33 +309,28 @@ namespace BeautySaloon.views
 
         private void buttonChangeClient_Click(object sender, EventArgs e)
         {
-            if (dataGridViewClients.SelectedRows.Count != 0)
-            {
-                ChangeClient changeClient = new ChangeClient(updatedClientsData, dataGridViewClients.SelectedRows[0]);
-                changeClient.Show();
-            }
-            else
+            if (dataGridViewClients.SelectedRows.Count <= 0)
             {
                 MessageBox.Show("ничего не выбранно");
+                return;
             }
-      
+            ChangeClient changeClient = new ChangeClient(updatedClientsData, dataGridViewClients.SelectedRows[0]);
+            changeClient.Show();      
         }
 
         private void buttonDeleteClient_Click(object sender, EventArgs e)
         {
-            if (dataGridViewClients.SelectedRows.Count != 0)
-            {
-                ClientItem clientItem = new ClientItem
-                {
-                    id = dataGridViewClients.SelectedRows[0].Cells["Id"].Value.ToString()
-                };
-                apiService.clients.deleteItem(clientItem);
-                updatedClientsData();
-            }            
-            else
+            if (dataGridViewClients.SelectedRows.Count <= 0)
             {
                 MessageBox.Show("ничего не выбранно");
+                return;
             }
+            ClientItem clientItem = new ClientItem
+            {
+                id = dataGridViewClients.SelectedRows[0].Cells["Id"].Value.ToString()
+            };
+            apiService.clients.deleteItem(clientItem);
+            updatedClientsData();   
         }
 
         private void buttonFilterClients_Click(object sender, EventArgs e)
@@ -347,32 +342,64 @@ namespace BeautySaloon.views
 
         private void buttonCreateOrder_Click(object sender, EventArgs e)
         {
-           
+            CreateOrder createOrder = new CreateOrder(updatedOrdersData);
+            createOrder.Show();
         }
 
-
-
-        private void tabPageOrders_Paint(object sender, PaintEventArgs e)
+        private void buttonFilterOrders_Click(object sender, EventArgs e)
         {
+            var data = apiService.orders.getFilteredData(textBoxOrdersFilter.Text);
+            dataGridViewOrders.DataSource = data;
+            tableOrdersSetView(dataGridViewOrders);
+        }
+
+        private void dataGridViewOrders_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
+        {          
+            if (dataGridViewOrders.Rows.Count <= 0) { return; }
+            foreach (DataGridViewRow row in dataGridViewOrders.Rows)
+            {
+
+                if (row.Cells["Статус"].Value.ToString() == "completed")
+                {
+                    row.DefaultCellStyle.ForeColor = Color.Green;
+                }
+                if (row.Cells["Статус"].Value.ToString() == "canceled")
+                {
+                    row.DefaultCellStyle.ForeColor = Color.DarkGray;
+                }
+            }
+        }
+
+        private void buttonSetStatusComplited_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewOrders.SelectedRows.Count <= 0)
+            {
+                MessageBox.Show("ничего не выбранно");
+                return;
+            }
+            OrderItem orderItem = new OrderItem
+            {
+                id = dataGridViewOrders.SelectedRows[0].Cells["Id"].Value.ToString(),
+                status = "completed",
+            };
+            apiService.orders.editStatus(orderItem);
             updatedOrdersData();
         }
 
-        private void tabPageSkills_Paint(object sender, PaintEventArgs e)
+        private void buttonSetStatusCanceled_Click(object sender, EventArgs e)
         {
-            updatedSkillsEmployeeData();
-            dataGridViewSkills.Rows[0].Selected = true;
-            updatedCheckedSkillsByEmployee();
-            
-        }
-
-        private void tabPageCares_Paint(object sender, PaintEventArgs e)
-        {
-            updatedCaresData();
-        }
-
-        private void tabPageClients_Paint(object sender, PaintEventArgs e)
-        {
-            updatedClientsData();
+            if (dataGridViewOrders.SelectedRows.Count <= 0)
+            {
+                MessageBox.Show("ничего не выбранно");
+                return;
+            }
+            OrderItem orderItem = new OrderItem
+            {
+                id = dataGridViewOrders.SelectedRows[0].Cells["Id"].Value.ToString(),
+                status = "canceled",
+            };
+            apiService.orders.editStatus(orderItem);
+            updatedOrdersData();
         }
     }
 }

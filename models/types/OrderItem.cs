@@ -13,8 +13,8 @@ namespace BeautySaloon.models.types
         public string idEmployee { get; set; }
         public string idCare { get; set; }
         public DateTime dateOrder { get; set; }
-        public TimeSpan startTime { get; set; }
-        public TimeSpan endTime { get; set; }
+        public DateTime startTime { get; set; }
+        public DateTime endTime { get; set; }
         public string status { get; set; }
     }
 }

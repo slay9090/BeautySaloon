@@ -1,4 +1,5 @@
 ﻿using BeautySaloon.controllers;
+using BeautySaloon.models.types;
 using BeautySaloon.models.Types;
 using System;
 using System.Collections.Generic;
@@ -54,6 +55,17 @@ namespace BeautySaloon.models
         public string deleteRow(EmployeeItem employeeItem) {
             string sql = $"DELETE FROM {bdName}.{TableName.employees} " +
                 $"WHERE Id={employeeItem.id};";
+            return sql;
+        }
+
+        public string getTableDataByCareId(string careId) {
+
+            string sql = $"SELECT FirstName, SurnName, MiddleName, Id, `Position`, " +
+                $"CONCAT(FirstName, ' ', SurnName) as FullName " +
+                $"FROM {bdName}.{TableName.employees} " +
+                $"LEFT JOIN {bdName}.{TableName.skills} ON {TableName.skills}.IdEmployee = {TableName.employees}.Id " +
+                $"WHERE {TableName.skills}.IdCare = {careId} ;";
+
             return sql;
         }
     }

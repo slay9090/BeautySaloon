@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BeautySaloon.models.Types;
 using BeautySaloon.utils;
+using BeautySaloon.models.types;
 
 namespace BeautySaloon.controllers.modules
 {
@@ -49,6 +50,11 @@ namespace BeautySaloon.controllers.modules
 
         public BindingSource getFilteredData(string searchValue) {
             return Utils.DBAdapter.getBdData(dbConnect, modelService.employees.getTableFilteredData(searchValue));
+        }
+
+        public BindingSource getDataByCareId(CareItem careItem)
+        {
+            return Utils.DBAdapter.getBdData(dbConnect, modelService.employees.getTableDataByCareId(careItem.id));
         }
     }
 }

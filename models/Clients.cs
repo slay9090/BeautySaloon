@@ -16,7 +16,8 @@ namespace BeautySaloon.models
 
         public string getTableData()
         {
-            string sql = $"SELECT * FROM {bdName}.{TableName.clients};";
+            string sql = $"SELECT *, CONCAT(FirstName, ' ', SurnName) as FullName " +
+                $"FROM {bdName}.{TableName.clients};";            
             return sql;
         }
         public string addRow(ClientItem clientsItem)

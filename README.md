@@ -1,9 +1,14 @@
 # BeautySaloon
 
 docker run -d -p 3306:3306 --name mysql-docker-container -e MYSQL_DATABASE=BSDB -e MYSQL_USER=admin -e MYSQL_PASSWORD=password -e MYSQL_ALLOW_EMPTY_PASSWORD=YES mysql/mysql-server:latest
+
 docker ps
+
 PAUSE
 
+--------------------
+
+БД
 
 -- BSDB.Clients definition
 
